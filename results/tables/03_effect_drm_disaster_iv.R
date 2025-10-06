@@ -51,22 +51,12 @@ eq3 <- feols(share_desalojados  ~ + 1 | sist_alert_ench ~ z_mean_sist_alert_ench
              se="hetero", data=dados2)
 results3 <- table_ivreg(eq3)
 
-eq4 <- feols(share_desalojados  ~ + 1 | cemaden ~ z_mean_cemaden,
-             se="hetero", data=dados2)
-results4 <- table_ivreg(eq4)
-
-
 
 ###### Estimating 2SLS  - With Controls #############
 
 eq1_control <- feols(share_desalojados ~ cobertura_agua +
                        p_informal + p_urbana + log_gdp_pc + log_population + count_100mm | map_risco_inund ~ z_mean_map_risco_inund,
              se="hetero", data=dados2)
-
-eq5 <- feols(share_desalojados ~ cobertura_agua + p_urbana + p_informal +
-               log_gdp_pc + log_population + count_100mm 
-             | map_risco_inund ~ z_mean_map_risco_inund , se="hetero",
-             data=dados2)
 
 results1_control <- table_ivreg(eq1_control)
 
@@ -81,10 +71,6 @@ eq3_control <- feols(share_desalojados  ~ cobertura_agua +
              se="hetero", data=dados2)
 results3_control <- table_ivreg(eq3_control)
 
-eq4_control <- feols(share_desalojados  ~ cobertura_agua +
-                       p_informal + p_urbana + log_gdp_pc + log_population + count_100mm | cemaden ~ z_mean_cemaden,
-             se="hetero", data=dados2)
-results4_control <- table_ivreg(eq4_control)
 
 results <- cbind(results1,results1_control,
                  results2,results2_control,

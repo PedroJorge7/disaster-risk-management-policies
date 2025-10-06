@@ -38,10 +38,6 @@ eq3 <- feols(share_desalojados  ~ + 1 + sist_alert_ench,
              se="hetero", data=dados2)
 results3 <- table_reg(eq3)
 
-eq4 <- feols(share_desalojados  ~ + 1 + prog_hab_realoc,
-             se="hetero", data=dados2)
-results4 <- table_reg(eq4)
-
 
 ###### Estimating 2SLS  - With Controls #############
 
@@ -61,10 +57,6 @@ eq3_control <- feols(share_desalojados  ~ cobertura_agua +
                      se="hetero", data=dados2)
 results3_control <- table_reg(eq3_control)
 
-eq4_control <- feols(share_desalojados  ~ cobertura_agua +
-                       p_informal + p_urbana + log_gdp_pc + log_population + count_100mm  + prog_hab_realoc,
-                     se="hetero", data=dados2)
-results4_control <- table_reg(eq4_control)
 
 results <- cbind(results1,results1_control,
                  results2,results2_control,

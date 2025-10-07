@@ -7,7 +7,7 @@ dados <- readRDS("./output/data_did.rds")
 #### Creating new Variables #####
 
 dados2 <- dados %>% filter(mun_affected == 1)
-cemaden <- data.table::fread("./data/outras_bases/monitored_cemaden.csv")
+cemaden <- data.table::fread("./output/monitored_cemaden.csv")
 
 Q <- quantile(dados2$desalojados, probs=c(.10, .90), na.rm = FALSE)
 iqr <- IQR(dados2$desalojados)
